@@ -1,6 +1,6 @@
 # Real Time Stock Dashboard
 
-A modern web application for monitoring real-time stock prices with customizable charts, dark mode, and historical data exports.
+A full-stack application providing live stock price monitoring, interactive charting, and historical data export. Built with a **Flask** backend that fetches data from Yahoo Finance and a **React** frontend using Recharts and Plotly.
 
 
 ## Features
@@ -8,33 +8,32 @@ A modern web application for monitoring real-time stock prices with customizable
 - **Live Price Updates**:  
   Fetches real-time quotes from `yfinance` via a Python/Flask backend.
 
-- **Interactive Charts**:  
-  - **Candlestick**, **Line**, or **Area** views  
-  - Overlaid **RSI (14-period)** indicator  
+- **High/Low Stats**: Tracks and displays session highs and lows
+
+- **Custom Chart Viewer / Interactive Charts**:
+  - **Candlestick**, **Line**, or **Area** chart types  
+  - Overlaid **RSI (Relative Strength Index 14-period)**  indicator  
   - **Dark / Light** theme toggle
+  - Adjustable time period and interval (including auto intervals)
 
-- **Historical Data Table**:  
+- **Historical Data Table**:
   - Columns: Time | Close | Volume | Open | High | Low  
-  - **Export CSV** button
 
-- **Custom Chart Viewer**:  
-  Choose ticker, time-period, interval, and chart type via dropdowns.
-
-High / Low Stats: Tracks and displays session highs and lows.
-Custom Chart Viewer:
-Historical Data Table: Scrollable, aligned table of time, open, high, low, close, and volume.
-Export CSV: Download historical data in CSV format.
-
+- **Export CSV**: Download historical data in CSV format.
 
 
 ## Technical Stack
 
-Frontend: React, CSS, recharts (for UI, charts, live updates)
-Backend: Python + Flask (multithreaded price fetching)
-API: yfinance (real stock data)
-Deployment: Vercel + Render (Host frontend & backend)
+- **Frontend:** React, CSS, recharts (for UI, charts, live updates)
+- **Backend:** Python + Flask (multithreaded price fetching)
+- **API:** yfinance (real stock data)
+- **Deployment:** Vercel + Render (Host frontend & backend)
 
 
+## Prerequisites
+
+- Python 3.8+ and 'pip'
+- Node.js 14+ and 'npm' 
 
 
 
