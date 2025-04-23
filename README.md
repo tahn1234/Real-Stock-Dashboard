@@ -76,6 +76,7 @@ npm start
 ```
 
 
+
 ## Usage
 - **Dashboard**: Displays live cards for each ticker with current price, high, low, and percent change
 - **Chart Viewer**: 
@@ -99,7 +100,14 @@ tree -I real_stock_dashboard/
 │   │   └── components/
 │   ├── public/
 └── README.md
-
+```bash
+Real_Time_Stock_Price_Dashboard/
+├── stock_dashboard.py
+├── requirements.txt
+├── README.md
+├── LICENSE
+└── Example.png
+```
 
 ## Configuration
 
