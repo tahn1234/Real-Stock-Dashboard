@@ -7,7 +7,9 @@ import yfinance as yf
 import pandas as pd
 
 app = Flask(__name__)
-CORS(app, origins=["https://real-stock-dashboard.vercel.app/"])
+# CORS(app, origins=["https://real-stock-dashboard.vercel.app/"])
+CORS(app, resources={r"/*": {"origins": "*"}})
+
 
 
 TICKERS = ["AAPL", "TSLA", "AMZN"]
