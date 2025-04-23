@@ -7,7 +7,8 @@ import yfinance as yf
 import pandas as pd
 
 app = Flask(__name__)
-CORS(app, supports_credentials=True)
+CORS(app, origins=["https://real-stock-dashboard.vercel.app/"])
+
 
 TICKERS = ["AAPL", "TSLA", "AMZN"]
 price_data = {ticker: 100.0 for ticker in TICKERS}
@@ -75,4 +76,4 @@ def get_history():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
-    app.run(port=5000)
+    app.run(host="0.0.0.0", port=5000)
