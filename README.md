@@ -1,6 +1,43 @@
-# Getting Started with Create React App
+# Real Time Stock Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern web application for monitoring real-time stock prices with customizable charts, dark mode, and historical data exports.
+
+
+## Features
+
+- **Live Price Updates**:  
+  Fetches real-time quotes from `yfinance` via a Python/Flask backend.
+
+- **Interactive Charts**:  
+  - **Candlestick**, **Line**, or **Area** views  
+  - Overlaid **RSI (14-period)** indicator  
+  - **Dark / Light** theme toggle
+
+- **Historical Data Table**:  
+  - Columns: Time | Close | Volume | Open | High | Low  
+  - **Export CSV** button
+
+- **Custom Chart Viewer**:  
+  Choose ticker, time-period, interval, and chart type via dropdowns.
+
+High / Low Stats: Tracks and displays session highs and lows.
+Custom Chart Viewer:
+Historical Data Table: Scrollable, aligned table of time, open, high, low, close, and volume.
+Export CSV: Download historical data in CSV format.
+
+
+
+## Technical Stack
+
+Frontend: React, CSS, recharts (for UI, charts, live updates)
+Backend: Python + Flask (multithreaded price fetching)
+API: yfinance (real stock data)
+Deployment: Vercel + Render (Host frontend & backend)
+
+
+
+
+
 
 ## Available Scripts
 
