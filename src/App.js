@@ -162,8 +162,8 @@ function App() {
     const fetchPrices = async () => {
       try {
         const [priceRes, statsRes] = await Promise.all([
-          fetch("${process.env.REACT_APP_API_BASE}/api/prices"),
-          fetch("${process.env.REACT_APP_API_BASE}/api/stats"),
+          fetch("http://127.0.0.1:5000/api/prices"),
+          fetch("http://127.0.0.1:5000/api/stats"),
         ]);
         const priceData = await priceRes.json();
         const statsData = await statsRes.json();
@@ -206,7 +206,7 @@ function App() {
       try {
         const effectiveInterval = interval === "auto" ? autoInterval[period] || "1m" : interval;
         const res = await fetch(
-          `${process.env.REACT_APP_API_BASE}/api/history?ticker=${selectedTicker}&period=${period}&interval=${effectiveInterval}`
+          `http://127.0.0.1:5000/api/history?ticker=${selectedTicker}&period=${period}&interval=${effectiveInterval}`
         );
         const data = await res.json();
         const rsi = calculateRSI(data);
@@ -241,7 +241,7 @@ function App() {
         <div
         style={{
           marginBottom: "1.5rem",
-          backgroundColor: isDarkMode ? "#0b1120" : "#e5e7eb",
+          backgroundColor: isDarkMode ? "#0f172a" : "#e5e7eb",
           padding: "1rem",
           borderRadius: "0.75rem",
           display: "flex",
