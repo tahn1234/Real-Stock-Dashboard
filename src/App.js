@@ -162,8 +162,8 @@ function App() {
     const fetchPrices = async () => {
       try {
         const [priceRes, statsRes] = await Promise.all([
-          fetch("http://127.0.0.1:5000/api/prices"),
-          fetch("http://127.0.0.1:5000/api/stats"),
+          fetch("https://real-stock-dashboard.onrender.com/api/prices"),
+          fetch("https://real-stock-dashboard.onrender.com/api/stats"),
         ]);
         const priceData = await priceRes.json();
         const statsData = await statsRes.json();
@@ -206,7 +206,7 @@ function App() {
       try {
         const effectiveInterval = interval === "auto" ? autoInterval[period] || "1m" : interval;
         const res = await fetch(
-          `http://127.0.0.1:5000/api/history?ticker=${selectedTicker}&period=${period}&interval=${effectiveInterval}`
+          `https://real-stock-dashboard.onrender.com/api/history?ticker=${selectedTicker}&period=${period}&interval=${effectiveInterval}`
         );
         const data = await res.json();
         const rsi = calculateRSI(data);
