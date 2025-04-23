@@ -31,24 +31,24 @@ A full-stack application providing live stock price monitoring, interactive char
 
 ## Prerequisites
 
-- Python 3.8+ and 'pip'
-- Node.js 14+ and 'npm' 
+- Python 3.8+ and `pip`
+- Node.js 14+ and `npm` 
 
 
 ## Installation
 
 ### Backend Setup
-1. Clone the repo and switch to the 'backend' folder:
+1. Clone the repo and switch to the `backend` folder:
 2. Create and activate a virtual environment:
 3. Install dependencies:
 
 ### Frontend Setup
-1. In a separate terminal, navigate to the 'frontend' folder:
+1. In a separate terminal, navigate to the `frontend` folder:
 2. Install npm packages:
 
 ### Running the App
-1. Start the backend (from 'backend/'):
-2. Start the frontend (from 'frontend/'):
+1. Start the backend (from `backend/`):
+2. Start the frontend (from `frontend/`):
 
 
 ## Usage
