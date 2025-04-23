@@ -2,15 +2,29 @@
 
 A full-stack application providing live stock price monitoring, interactive charting, and historical data export. Built with a **Flask** backend that fetches data from Yahoo Finance and a **React** frontend using Recharts and Plotly.
 
+## Table of Contents
+
+<!--toc:start-->
+1. Features (#features)
+2. Technical Stack (#technical-stack)
+3. Prerequisites
+4. Installation
+5. Running the App (#running-the-app)
+6. Usage
+7. Project Structure
+8. Configuration (#configuration)
+9. Contribution (#contribution)
+10. Lincense (#license)
+  <!--toc:end-->
 
 ## Features
 
 - **Live Price Updates**: Fetches real-time quotes from `yfinance` via a Python/Flask backend.
 - **High/Low Stats**: Tracks and displays session highs and lows
 - **Custom Chart Viewer / Interactive Charts**:
-    - **Candlestick**, **Line**, or **Area** chart types  
-    - Overlaid **RSI (Relative Strength Index 14-period)**  indicator  
-    - **Dark / Light** theme toggle
+    - Candlestick, Line, or Area chart types  
+    - Overlaid RSI (Relative Strength Index 14-period) indicator  
+    - Dark / Light theme toggle
     - Adjustable time period and interval (including auto intervals)
 - **Historical Data Table**:
   - Columns: Time | Close | Volume | Open | High | Low  
