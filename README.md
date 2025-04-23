@@ -39,16 +39,41 @@ A full-stack application providing live stock price monitoring, interactive char
 
 ### Backend Setup
 1. Clone the repo and switch to the `backend` folder:
+```bash
+    git clone https//github.com/tahn1234/real-stock-dashboard.git
+    cd real-stock-dashboard/backend
+```
 2. Create and activate a virtual environment:
+```bash
+    python3 -m venv venv
+    source venv/bin/activate   # macOS/Linux
+    venv\Scripts\activate    # Windows
+```
 3. Install dependencies:
+```bash
+    pip install -r requirements.txt
+```
 
 ### Frontend Setup
 1. In a separate terminal, navigate to the `frontend` folder:
+```bash
+    cd ../frontend
+```
 2. Install npm packages:
+```bash
+    npm install
+```
 
 ### Running the App
 1. Start the backend (from `backend/`):
+```bash
+    source venv/bin/activate
+    python server.py
+```
 2. Start the frontend (from `frontend/`):
+```bash
+    npm start
+```
 
 
 ## Usage
@@ -61,8 +86,7 @@ A full-stack application providing live stock price monitoring, interactive char
 
 
 ## Project Structure
-tree
-real_stock_dashboard/
+tree -I real_stock_dashboard/
 ├── backend/              # Flask API
 │   ├── server.py
 │   └── thread.py        # price-fetching thread logic
@@ -77,9 +101,26 @@ real_stock_dashboard/
 └── README.md
 
 
+## Configuration
+
+- **Tickers**: Modify the `TICKERS` list in `backend/server.py`.
+- **Fetch interval**: Adjust the default polling interval in `thread.fetch_real_price`.
+- **CORS**: Configured to allow requests from `localhost:3000`.
 
 
+## Contributing
 
+I would love any help! Whether you find a bug, want to propose a new feature, or improve the documentation, any contributions are welcome:
+1. Fork the repo.
+2. Create your feature branch 
+3. Commit your changes
+4. Push your branch
+4. Crete a pull request
+
+
+## License
+
+Distributed under MIT License. See `LICENSE` for more information.
 
 
 
