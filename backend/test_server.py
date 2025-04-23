@@ -2,7 +2,7 @@ from flask import Flask, jsonify
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)  # ⛑ Allow everything (dev-only)
+CORS(app)
 
 @app.route("/api/prices")
 def prices():

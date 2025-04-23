@@ -1,65 +1,78 @@
-import yfinance as yf
-import time
-from datetime import datetime, timedelta
 import os
+from flask import Flask, jsonify, request
+from flask_cors import CORS
+from threading import Thread, Lock
+from thread import fetch_real_price
+import yfinance as yf
+import pandas as pd
 
-def interval_to_timedelta(interval):
-    mapping = {
-        "1m": timedelta(minutes=1),
-        "5m": timedelta(minutes=5),
-        "30m": timedelta(minutes=30),
-        "1h": timedelta(hours=1),
-    }
-    return mapping.get(interval, timedelta(minutes=1))
+app = Flask(__name__)
+CORS(app, supports_credentials=True)
 
-def fill_missing_timestamps(data, interval):
-    if not data:
-        return []
+TICKERS = ["AAPL", "TSLA", "AMZN"]
+price_data = {ticker: 100.0 for ticker in TICKERS}
+stats_data = {ticker: {"high": 100.0, "low": 100.0} for ticker in TICKERS}
+lock = Lock()
 
-    filled_data = []
-    delta = interval_to_timedelta(interval)
-    current = datetime.strptime(data[0]['time'], "%Y-%m-%d %H:%M")
-    end = datetime.strptime(data[-1]['time'], "%Y-%m-%d %H:%M")
+if not os.path.exists("logs"):
+    os.makedirs("logs")
 
-    index = 0
-    while current <= end:
-        current_str = current.strftime("%Y-%m-%d %H:%M")
-        if index < len(data) and data[index]['time'] == current_str:
-            filled_data.append(data[index])
-            index += 1
-        else:
-            filled_data.append({
-                "time": current_str,
-                "price": None,
-                "volume": 0,
-                "open": None,
-                "high": None,
-                "low": None,
-                "close": None,
-                "rsi": None,
+for ticker in TICKERS:
+    thread = Thread(
+        target=fetch_real_price,
+        args=(ticker, price_data, lock, stats_data, 60),
+        daemon=True,
+    )
+    thread.start()
+
+@app.route("/")
+def home():
+    return "Flask is running!"
+
+@app.route("/api/prices")
+def get_prices():
+    with lock:
+        return jsonify(price_data)
+
+@app.route("/api/stats")
+def get_stats():
+    with lock:
+        return jsonify(stats_data)
+
+@app.route("/api/history")
+def get_history():
+    ticker = request.args.get("ticker", "AAPL")
+    period = request.args.get("period", "1d")
+    interval = request.args.get("interval", "1m")
+    try:
+        stock = yf.Ticker(ticker)
+        hist = stock.history(period=period, interval=interval)
+
+        if hist.empty or "Close" not in hist.columns:
+            print(f"[WARN] No data for {ticker} with {period}/{interval}")
+            return jsonify([])
+
+        hist = hist.reset_index()
+        hist["time"] = hist["Datetime"].dt.strftime("%Y-%m-%d %H:%M")
+
+        data = []
+        for _, row in hist.iterrows():
+            if pd.isna(row["Close"]):
+                continue  # Skip invalid rows
+            data.append({
+                "time": row["time"],
+                "price": float(row["Close"]),
+                "volume": int(row["Volume"]) if not pd.isna(row["Volume"]) else None,
+                "open": float(row["Open"]) if not pd.isna(row["Open"]) else None,
+                "high": float(row["High"]) if not pd.isna(row["High"]) else None,
+                "low": float(row["Low"]) if not pd.isna(row["Low"]) else None,
+                "close": float(row["Close"]),
             })
-        current += delta
+        return jsonify(data)
 
-    return filled_data
+    except Exception as e:
+        print(f"[ERROR] /api/history failed: {e}")
+        return jsonify({"error": str(e)}), 500
 
-def fetch_real_price(ticker, shared_data, lock, stats_data, interval=60):
-    while True:
-        try:
-            stock = yf.Ticker(ticker)
-            hist = stock.history(period="1d", interval="1m")
-            if not hist.empty:
-                price = hist['Close'].iloc[-1]
-                with lock:
-                    shared_data[ticker] = round(price, 2)
-                    stats_data[ticker]["high"] = max(stats_data[ticker]["high"], price)
-                    stats_data[ticker]["low"] = min(stats_data[ticker]["low"], price)
-
-                timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                os.makedirs("logs", exist_ok=True)
-                with open(f"logs/{ticker}.csv", "a") as f:
-                    f.write(f"{timestamp},{price:.2f}\n")
-
-        except Exception as e:
-            print(f"[ERROR] {ticker}: {e}")
-
-        time.sleep(interval)
+if __name__ == "__main__":
+    app.run(port=5000)

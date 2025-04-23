@@ -36,10 +36,10 @@ A full-stack application providing live stock price monitoring, interactive char
 
 ## Technical Stack
 
-- **Frontend:** React, CSS, recharts (for UI, charts, live updates)
+- **Frontend:** React, CSS, Recharts, Plotly.js
 - **Backend:** Python + Flask (multithreaded price fetching)
-- **API:** yfinance (real stock data)
-- **Deployment:** Vercel + Render (Host frontend & backend)
+- **API:** `yfinance` - real time and historical financial data from Yahoo Finance
+- **Deployment:** Vercel + Render
 
 
 ## Prerequisites
