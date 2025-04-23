@@ -87,7 +87,8 @@ npm start
 
 
 ## Project Structure
-tree -I real_stock_dashboard/
+```bash
+real_stock_dashboard/
 ├── backend/              # Flask API
 │   ├── server.py
 │   └── thread.py        # price-fetching thread logic
@@ -100,14 +101,8 @@ tree -I real_stock_dashboard/
 │   │   └── components/
 │   ├── public/
 └── README.md
-```bash
-Real_Time_Stock_Price_Dashboard/
-├── stock_dashboard.py
-├── requirements.txt
-├── README.md
-├── LICENSE
-└── Example.png
 ```
+
 
 ## Configuration
 
