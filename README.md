@@ -6,18 +6,14 @@ A full-stack application providing live stock price monitoring, interactive char
 ## Features
 
 - **Live Price Updates**: Fetches real-time quotes from `yfinance` via a Python/Flask backend.
-
 - **High/Low Stats**: Tracks and displays session highs and lows
-
 - **Custom Chart Viewer / Interactive Charts**:
-  - **Candlestick**, **Line**, or **Area** chart types  
-  - Overlaid **RSI (Relative Strength Index 14-period)**  indicator  
-  - **Dark / Light** theme toggle
-  - Adjustable time period and interval (including auto intervals)
-
+    - **Candlestick**, **Line**, or **Area** chart types  
+    - Overlaid **RSI (Relative Strength Index 14-period)**  indicator  
+    - **Dark / Light** theme toggle
+    - Adjustable time period and interval (including auto intervals)
 - **Historical Data Table**:
   - Columns: Time | Close | Volume | Open | High | Low  
-
 - **Export CSV**: Download historical data in CSV format.
 
 
@@ -91,7 +87,7 @@ npm start
 real_stock_dashboard/
 ├── backend/              # Flask API
 │   ├── server.py
-│   └── thread.py        # price-fetching thread logic
+│   └── thread.py         # price-fetching thread logic
 │   └── requirements.txt
 ├── frontend/             # React app
 │   ├── src/
