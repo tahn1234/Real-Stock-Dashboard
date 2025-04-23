@@ -61,7 +61,7 @@ A full-stack application providing live stock price monitoring, interactive char
 
 
 ## Project Structure
-$ tree
+tree
 real_stock_dashboard/
 ├── backend/              # Flask API
 │   ├── server.py
