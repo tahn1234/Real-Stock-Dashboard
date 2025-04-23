@@ -6,7 +6,7 @@ A full-stack application providing live stock price monitoring, interactive char
 
 <!-- toc:start -->
 1. [Features](#features)
-2. [Tech Stack](#tech-stack)
+2. [Technical Stack](#technical-stack)
 3. [Prerequisites](#prerequisites)
 4. [Installation](#installation)
    - [Backend Setup](#backend-setup)
