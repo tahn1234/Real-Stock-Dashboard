@@ -5,8 +5,7 @@ A full-stack application providing live stock price monitoring, interactive char
 
 ## Features
 
-- **Live Price Updates**:  
-  Fetches real-time quotes from `yfinance` via a Python/Flask backend.
+- **Live Price Updates**: Fetches real-time quotes from `yfinance` via a Python/Flask backend.
 
 - **High/Low Stats**: Tracks and displays session highs and lows
 
@@ -34,6 +33,53 @@ A full-stack application providing live stock price monitoring, interactive char
 
 - Python 3.8+ and 'pip'
 - Node.js 14+ and 'npm' 
+
+
+## Installation
+
+### Backend Setup
+1. Clone the repo and switch to the 'backend' folder:
+2. Create and activate a virtual environment:
+3. Install dependencies:
+
+### Frontend Setup
+1. In a separate terminal, navigate to the 'frontend' folder:
+2. Install npm packages:
+
+### Running the App
+1. Start the backend (from 'backend/'):
+2. Start the frontend (from 'frontend/'):
+
+
+## Usage
+- **Dashboard**: Displays live cards for each ticker with current price, high, low, and percent change
+- **Chart Viewer**: 
+    1. Select Ticker, Time Period, Interval, and Chart Type
+    2. Toggle Dark/Light mode with the top-right button
+    View combined price + RSI overlay when in Candlestick mode
+- **Historical Data**: Scroll through the table below the chart. Click Export CSV to download.
+
+
+## Project Structure
+$ tree
+real_stock_dashboard/
+├── backend/              # Flask API
+│   ├── server.py
+│   └── thread.py        # price-fetching thread logic
+│   └── requirements.txt
+├── frontend/             # React app
+│   ├── src/
+│   │   ├── index.js
+│   │   ├── App.js
+│   │   ├── App.css
+│   │   └── components/
+│   ├── public/
+└── README.md
+
+
+
+
+
 
 
 
