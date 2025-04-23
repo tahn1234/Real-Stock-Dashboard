@@ -4,18 +4,21 @@ A full-stack application providing live stock price monitoring, interactive char
 
 ## Table of Contents
 
-<!--toc:start-->
-1. Features (#features)
-2. Technical Stack (#technical-stack)
-3. Prerequisites
-4. Installation
-5. Running the App (#running-the-app)
-6. Usage
-7. Project Structure
-8. Configuration (#configuration)
-9. Contribution (#contribution)
-10. Lincense (#license)
-  <!--toc:end-->
+<!-- toc:start -->
+1. [Features](#features)
+2. [Tech Stack](#tech-stack)
+3. [Prerequisites](#prerequisites)
+4. [Installation](#installation)
+   - [Backend Setup](#backend-setup)
+   - [Frontend Setup](#frontend-setup)
+5. [Running the App](#running-the-app)
+6. [Usage](#usage)
+7. [Project Structure](#project-structure)
+8. [Configuration](#configuration)
+9. [Contributing](#contributing)
+10. [License](#license)
+<!-- toc:end -->
+
 
 ## Features
 
