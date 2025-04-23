@@ -162,8 +162,8 @@ function App() {
     const fetchPrices = async () => {
       try {
         const [priceRes, statsRes] = await Promise.all([
-          fetch("https://real-stock-dashboard.onrender.com/api/prices"),
-          fetch("https://real-stock-dashboard.onrender.com/api/stats"),
+          fetch("${process.env.REACT_APP_API_BASE}/api/prices"),
+          fetch("${process.env.REACT_APP_API_BASE}/api/stats"),
         ]);
         const priceData = await priceRes.json();
         const statsData = await statsRes.json();
@@ -206,7 +206,7 @@ function App() {
       try {
         const effectiveInterval = interval === "auto" ? autoInterval[period] || "1m" : interval;
         const res = await fetch(
-          `https://real-stock-dashboard.onrender.com/api/history?ticker=${selectedTicker}&period=${period}&interval=${effectiveInterval}`
+          `${process.env.REACT_APP_API_BASE}/api/history?ticker=${selectedTicker}&period=${period}&interval=${effectiveInterval}`
         );
         const data = await res.json();
         const rsi = calculateRSI(data);
